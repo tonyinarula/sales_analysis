@@ -1,0 +1,11 @@
+order_id,order_date,customer_id,product,category,unit_price,quantity
+O1001,2024-01-10,C001,Laptop,Electronics,1200,1
+O1002,2024-01-12,C002,Mouse,Electronics,25,2
+O1003,2024-01-15,C003,Desk,Furniture,220,1
+O1004,2024-02-02,C001,Monitor,Electronics,300,1
+O1005,2024-02-10,C004,Chair,Furniture,90,2
+O1006,2024-02-18,C002,Mouse,Electronics,20,3
+O1007,2024-03-01,C005,Laptop,Electronics,1250,1
+O1008,2024-03-05,C006,Desk,Furniture,210,
+O1009,2024-03-18,C001,Keyboard,Electronics,45,1
+O1010,2024-03-25,C007,Monitor,Electronics,320,1

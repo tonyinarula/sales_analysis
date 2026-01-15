@@ -1,0 +1,8 @@
+customer_id,customer_name,signup_date,country,segment
+C001,Alice Smith,2023-11-10,USA,Consumer
+C002,Bob Johnson,2023-12-05,USA,Corporate
+C003,Carla Gomez,2024-01-15,Brazil,Consumer
+C004,David Lee,2024-02-01,Canada,SMB
+C005,Eva Müller,2024-02-20,Germany,Consumer
+C006,Frank Brown,2024-03-05,USA,SMB
+C007,Grace Kim,2024-03-20,South Korea,Corporate
