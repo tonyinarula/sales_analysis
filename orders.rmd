@@ -1,0 +1,42 @@
+library(tidyverse)
+library(lubridate)
+
+customers <- read_csv("customers.csv")
+orders <- read_csv("orders.csv")
+
+orders <- orders %>%
+  mutate(
+    quantity = if_else(is.na(quantity), 1, quantity),
+    order_date = ymd(order_date)
+  ) %>%
+  group_by(product) %>%
+  mutate(unit_price = median(unit_price, na.rm = TRUE)) %>%
+  ungroup() %>%
+  mutate(
+    total_amount = unit_price * quantity,
+    order_month = floor_date(order_date, "month")
+  )
+
+joined <- orders %>% left_join(customers, by = "customer_id")
+
+# Analysis
+top_customers <- joined %>%
+  group_by(customer_id, customer_name) %>%
+  summarize(total_revenue = sum(total_amount)) %>%
+  arrange(desc(total_revenue)) %>%
+  slice_head(n = 3)
+
+revenue_category <- joined %>%
+  group_by(category) %>%
+  summarize(revenue = sum(total_amount))
+
+aov_segment <- joined %>%
+  group_by(segment) %>%
+  summarize(aov = mean(total_amount)) %>%
+  arrange(desc(aov))
+
+monthly_revenue <- joined %>%
+  group_by(order_month) %>%
+  summarize(revenue = sum(total_amount))
+
+write_csv(joined, "orders_customers_clean.csv")
